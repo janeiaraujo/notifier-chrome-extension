@@ -1,0 +1,29 @@
+
+{
+    "manifest_version": 3,
+    "name": "Notifier to Telegram",
+    "version": "1.0",
+    "description": "Captura notificações de sites como Slack, Teams e Gather e envia para o Telegram.",
+    "permissions": ["tabs", "notifications", "scripting"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.slack.com/*",
+                "https://teams.microsoft.com/*",
+                "https://app.gather.town/*"
+            ],
+            "js": ["content.js"]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icon16.png",
+            "48": "icon48.png",
+            "128": "icon128.png"
+        }
+    }
+}
